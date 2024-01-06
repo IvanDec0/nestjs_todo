@@ -1,7 +1,7 @@
 export const DATABASE_CONNECTION = 'DATABASE_CONNECTION';
 export const LIST_MODEL = 'LIST_MODEL';
 export const USER_MODEL = 'USER_MODEL';
-export const PASS_ENCODER = 10;
+export const SALT_ROUNDS = 10;
 
 // To env: 
 

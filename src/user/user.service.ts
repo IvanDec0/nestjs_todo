@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { hash, compare } from 'bcrypt';
-import { PASS_ENCODER, SECRET, USER_MODEL } from 'src/constants/constants';
+import { SALT_ROUNDS, SECRET, USER_MODEL } from 'src/constants/constants';
 import { UserDocument } from './schema/user.schema';
 import { Model } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
@@ -20,7 +20,7 @@ export class UserService {
   async register(createUserDto: CreateUserDto) {
 
     const { password } = createUserDto;
-    const plainToHash = await hash(password, PASS_ENCODER)
+    const plainToHash = await hash(password, SALT_ROUNDS)
     createUserDto = { ...createUserDto, password: plainToHash }
     return this.userModel.create(createUserDto);
   }
