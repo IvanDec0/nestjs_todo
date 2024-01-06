@@ -8,5 +8,5 @@ export class CreateListDto {
     @IsNotEmpty()
     description: string;
 
-    status: boolean;
+    user: any;
 }
